@@ -12,17 +12,17 @@ export default function Dashboard() {
       <div className="custom-padding">
         <Row gutter={24}>
           <Col md={8}>
-            <Card title="Bar Chart" bordered={false} style={{ height: '100%' }}>
+            <Card title="Bar Chart" bordered={false}>
               <BarChart />
             </Card>
           </Col>
           <Col md={8}>
-            <Card title="Card title" bordered={false} style={{ width: '100%' }}>
+            <Card title="Pie Chart" bordered={false}>
               <PieChart />
             </Card>
           </Col>
           <Col md={8}>
-            <Card title="Card title" bordered={false} style={{ width: '100%' }}>
+            <Card title="Liquid Chart" bordered={false}>
               <LiquidChart />
             </Card>
           </Col>

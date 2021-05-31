@@ -51,7 +51,7 @@ const BarChart = () => {
       sales: { alias: 'sales' },
     },
   };
-  return <Column {...config} height={150} />;
+  return <Column {...config} height={200} />;
 };
 
 export default BarChart;
