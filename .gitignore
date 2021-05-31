@@ -1,0 +1,11 @@
+*.pyc
+*~
+/.vscode
+__pycache__
+db.sqlite3
+media
+static
+venv
+.env
+demo
+node_modules
