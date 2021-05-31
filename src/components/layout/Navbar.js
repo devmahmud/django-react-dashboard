@@ -22,7 +22,7 @@ const Navbar = () => {
       style={{ padding: '0 3vw' }}
       selectedKeys={[history.location.pathname]}
     >
-      <Menu.Item to="/dashboard/" key="home">
+      <Menu.Item to="/dashboard/" key="home" disabled>
         <img src={Logo} alt="DC" className="logo menu-item" />
       </Menu.Item>
       <Menu.Item key="/dashboard">
