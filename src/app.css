@@ -17,13 +17,14 @@ body {
 }
 
 .login-card {
-  margin-top: 15vh;
+  margin-top: 5rem;
   border-radius: 10px;
 }
 .logo {
   width: 40px;
+  height: 40px;
 }
 
 .custom-padding {
-  padding: 2vh 3vw 0vh;
+  padding: 1rem 2rem;
 }

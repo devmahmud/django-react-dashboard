@@ -37,10 +37,14 @@ export default function Login() {
 
   return (
     <Row justify="center">
-      <Col md={{ span: 9 }}>
-        <Card className="login-card">
+      <Col md={8}>
+        <Card className="login-card" stay>
           <Row justify="center">
-            <img src={logo} alt="Dashboard" width="200" />
+            <img
+              src={logo}
+              alt="Dashboard"
+              style={{ width: '150px', height: '150px' }}
+            />
           </Row>
           <br />
           <Form
