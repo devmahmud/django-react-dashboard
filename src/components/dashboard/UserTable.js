@@ -1,83 +1,59 @@
-import { Table, Tag } from 'antd';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Table } from 'antd';
+import { getAllUsersAsync } from '../../redux/userSlice';
 
 const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
-    key: 'name',
+  },
+  {
+    title: 'Username',
+    dataIndex: 'username',
   },
   {
     title: 'Email',
     dataIndex: 'email',
-    key: 'email',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Sex',
-    dataIndex: 'sex',
-    key: 'sex',
   },
   {
     title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    dataIndex: ['address', 'street'],
   },
   {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (tags) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    sex: 'Male',
-    email: 'jbrown@gmail.com',
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    title: 'Suite',
+    dataIndex: ['address', 'suite'],
   },
   {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    sex: 'Male',
-    email: 'jgreen@gmail.com',
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    title: 'Phone',
+    dataIndex: 'phone',
   },
   {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    sex: 'Male',
-    email: 'jblack@gmail.com',
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    title: 'Website',
+    dataIndex: 'website',
+  },
+  {
+    title: 'Company',
+    dataIndex: ['company', 'name'],
   },
 ];
 
 export default function UserTable() {
-  return <Table columns={columns} dataSource={data} />;
+  const dispatch = useDispatch();
+
+  const { users, usersRequestStatus } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(getAllUsersAsync());
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <Table
+      columns={columns}
+      dataSource={users}
+      rowKey="id"
+      loading={usersRequestStatus === 'pending' ? true : false}
+    />
+  );
 }
