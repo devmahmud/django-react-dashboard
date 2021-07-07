@@ -70,7 +70,7 @@ export default function UserTable() {
         </tr>
       </table>
     ),
-    // showExpandColumn: true,
+    showExpandColumn: true,
   };
 
   useEffect(() => {
