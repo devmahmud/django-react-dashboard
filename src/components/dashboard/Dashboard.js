@@ -7,7 +7,7 @@ import UserTable from './UserTable';
 
 export default function Dashboard() {
   return (
-    <div>
+    <div className="bg-white">
       <TopNavbar />
 
       <div className="mt-4">
@@ -21,6 +21,12 @@ export default function Dashboard() {
           </Col>
           <Col md={4}>
             <LiquidChart />
+          </Col>
+        </Row>
+
+        <Row className="mt-5">
+          <Col md={12}>
+            <UserTable />
           </Col>
         </Row>
       </div>

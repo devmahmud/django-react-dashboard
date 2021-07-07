@@ -7,6 +7,9 @@ const PieChart = () => {
     chart: {
       width: 380,
       type: 'pie',
+      toolbar: {
+        show: true,
+      },
     },
     labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
     responsive: [

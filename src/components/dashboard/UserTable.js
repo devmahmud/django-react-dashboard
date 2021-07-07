@@ -1,40 +1,42 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table } from 'react-bootstrap';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+
 import { getAllUsersAsync } from '../../redux/userSlice';
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    text: 'Name',
+    dataField: 'name',
   },
   {
-    title: 'Username',
-    dataIndex: 'username',
+    text: 'Username',
+    dataField: 'username',
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
+    text: 'Email',
+    dataField: 'email',
   },
   {
-    title: 'Address',
-    dataIndex: ['address', 'street'],
+    text: 'Address',
+    dataField: 'address.street',
   },
   {
-    title: 'Suite',
-    dataIndex: ['address', 'suite'],
+    text: 'Suite',
+    dataField: 'address.suite',
   },
   {
-    title: 'Phone',
-    dataIndex: 'phone',
+    text: 'Phone',
+    dataField: 'phone',
   },
   {
-    title: 'Website',
-    dataIndex: 'website',
+    text: 'Website',
+    dataField: 'website',
   },
   {
-    title: 'Company',
-    dataIndex: ['company', 'name'],
+    text: 'Company',
+    dataField: 'company.name',
   },
 ];
 
@@ -43,17 +45,20 @@ export default function UserTable() {
 
   const { users, usersRequestStatus } = useSelector((state) => state.user);
 
+  console.log(users);
+
   useEffect(() => {
     dispatch(getAllUsersAsync());
     // eslint-disable-next-line
   }, []);
 
   return (
-    <Table
+    <BootstrapTable
+      keyField="id"
+      classes="table-responsive-sm"
+      data={users || []}
       columns={columns}
-      dataSource={users}
-      rowKey="id"
-      loading={usersRequestStatus === 'pending' ? true : false}
+      pagination={paginationFactory()}
     />
   );
 }

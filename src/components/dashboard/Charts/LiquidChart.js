@@ -5,7 +5,6 @@ const LiquidChart = () => {
   const options = {
     chart: {
       height: 350,
-      type: 'radialBar',
       toolbar: {
         show: true,
       },
