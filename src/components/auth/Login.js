@@ -1,20 +1,25 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Row, Col, Card, Form, Input, Button } from 'antd';
+import { Row, Col, Card, Form, Button, Spinner } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import logo from '../../assets/images/logo.png';
+import { useForm } from 'react-hook-form';
 
 import { login } from '../../redux/authSlice';
 import authAPI from '../../services/authAPI';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onFinish = async (values) => {
+  const onSubmit = async (values) => {
     setLoading(true);
 
     const res = await authAPI.login(values);
@@ -36,53 +41,46 @@ export default function Login() {
   };
 
   return (
-    <Row justify="center">
-      <Col md={8}>
-        <Card className="login-card" stay>
-          <Row justify="center">
-            <img
-              src={logo}
-              alt="Dashboard"
-              style={{ width: '150px', height: '150px' }}
-            />
-          </Row>
-          <br />
-          <Form
-            name="basic"
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-          >
-            <Form.Item
-              label="Username"
-              name="username"
-              rules={[
-                { required: true, message: 'Please input your username!' },
-              ]}
-            >
-              <Input placeholder="Username" />
-            </Form.Item>
+    <div>
+      <Row>
+        <Col md={5} className="mx-auto mt-5">
+          <Card>
+            <Card.Body>
+              <Card.Title as="h5" className="text-center">
+                Login
+              </Card.Title>
 
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[
-                { required: true, message: 'Please input your password!' },
-              ]}
-            >
-              <Input.Password placeholder="Enter Your passwrod" />
-            </Form.Item>
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <Form.Group>
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    {...register('username', { required: true })}
+                    isInvalid={errors.username}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    {...register('password', { required: true })}
+                    isInvalid={errors.username}
+                  />
+                </Form.Group>
 
-            <Form.Item>
-              <Row justify="center">
-                <Button type="primary" htmlType="login" loading={loading}>
-                  Submit
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="mt-3"
+                  block
+                  disabled={loading}
+                >
+                  Login {loading && <Spinner animation="border" size="sm" />}
                 </Button>
-              </Row>
-            </Form.Item>
-          </Form>
-          <div className="text-center">v0.0.1</div>
-        </Card>
-      </Col>
-    </Row>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </div>
   );
 }

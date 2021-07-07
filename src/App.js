@@ -1,15 +1,16 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Routes from "./components/routing/Routes";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Routes from './components/routing/Routes';
+import { Container } from 'react-bootstrap';
 
 function App() {
   return (
-    <div>
+    <Container>
       <Router>
         <Switch>
           <Route component={Routes} />
         </Switch>
       </Router>
-    </div>
+    </Container>
   );
 }
 export default App;

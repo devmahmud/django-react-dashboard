@@ -11,20 +11,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #f1f1f1;
 }
-
-.text-center {
-  text-align: center;
-}
-
-.login-card {
-  margin-top: 5rem;
-  border-radius: 10px;
-}
-.logo {
-  width: 40px;
-  height: 40px;
-}
-
-.custom-padding {
-  padding: 1rem 2rem;
-}

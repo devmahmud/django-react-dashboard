@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
-import { ToastContainer } from "react-toastify";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+import { ToastContainer } from 'react-toastify';
 
-import reportWebVitals from "./reportWebVitals";
+import reportWebVitals from './reportWebVitals';
 
-import App from "./App";
-import store from "./redux/store";
-import "antd/dist/antd.css";
-import "react-toastify/dist/ReactToastify.css";
-import "./app.css";
+import App from './App';
+import store from './redux/store';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './app.css';
 
 let persistor = persistStore(store);
 
@@ -24,7 +24,7 @@ ReactDOM.render(
       </PersistGate>
     </Provider>
   </React.Fragment>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
