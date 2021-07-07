@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 
 import { getAllUsersAsync } from '../../redux/userSlice';
 
@@ -9,26 +10,37 @@ const columns = [
   {
     text: 'Name',
     dataField: 'name',
+    sort: true,
+    filter: textFilter(),
   },
   {
     text: 'Username',
     dataField: 'username',
+    sort: true,
+    filter: textFilter(),
   },
   {
     text: 'Email',
     dataField: 'email',
+    sort: true,
+    filter: textFilter(),
   },
   {
     text: 'Phone',
     dataField: 'phone',
+    sort: true,
+    filter: textFilter(),
   },
   {
     text: 'Website',
     dataField: 'website',
+    sort: true,
+    filter: textFilter(),
   },
   {
     text: 'Company',
     dataField: 'company.name',
+    sort: true,
   },
 ];
 
@@ -58,7 +70,7 @@ export default function UserTable() {
         </tr>
       </table>
     ),
-    showExpandColumn: true,
+    // showExpandColumn: true,
   };
 
   useEffect(() => {
@@ -74,6 +86,7 @@ export default function UserTable() {
       columns={columns}
       pagination={paginationFactory()}
       expandRow={expandRow}
+      filter={filterFactory()}
     />
   );
 }
