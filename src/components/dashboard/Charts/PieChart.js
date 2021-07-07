@@ -1,53 +1,30 @@
-import { Pie } from '@ant-design/charts';
+import Chart from 'react-apexcharts';
 
 const PieChart = () => {
-  let data = [
-    {
-      type: 'Item One',
-      value: 27,
+  const series = [44, 55, 13, 43, 22];
+
+  const options = {
+    chart: {
+      width: 380,
+      type: 'pie',
     },
-    {
-      type: 'Item Two',
-      value: 25,
-    },
-    {
-      type: 'Item Three',
-      value: 18,
-    },
-    {
-      type: 'Item Four',
-      value: 15,
-    },
-    {
-      type: 'Item Five',
-      value: 10,
-    },
-    {
-      type: 'Other',
-      value: 5,
-    },
-  ];
-  var config = {
-    appendPadding: 10,
-    data: data,
-    angleField: 'value',
-    colorField: 'type',
-    radius: 0.9,
-    label: {
-      type: 'inner',
-      offset: '-30%',
-      content: function content(_ref) {
-        var percent = _ref.percent;
-        return ''.concat(percent * 100, '%');
+    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: 'bottom',
+          },
+        },
       },
-      style: {
-        fontSize: 14,
-        textAlign: 'center',
-      },
-    },
-    interactions: [{ type: 'element-active' }],
+    ],
   };
-  return <Pie {...config} height={200} />;
+
+  return <Chart options={options} series={series} type="pie" />;
 };
 
 export default PieChart;

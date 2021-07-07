@@ -1,57 +1,22 @@
-import { Column } from '@ant-design/charts';
+import Chart from 'react-apexcharts';
 
 const BarChart = () => {
-  let data = [
-    {
-      type: 'furniture',
-      sales: 38,
+  const options = {
+    chart: {
+      id: 'basic-bar',
     },
-    {
-      type: 'Grain, oil and food',
-      sales: 52,
-    },
-    {
-      type: 'Fresh fruit',
-      sales: 61,
-    },
-    {
-      type: 'Beauty Care',
-      sales: 145,
-    },
-    {
-      type: 'baby supplies',
-      sales: 48,
-    },
-    {
-      type: 'Imported Food',
-      sales: 38,
-    },
-    {
-      type: 'Food and Beverage',
-      sales: 38,
-    },
-    {
-      type: 'Household cleaning',
-      sales: 38,
-    },
-  ];
-  var config = {
-    data: data,
-    xField: 'type',
-    yField: 'sales',
-    label: {
-      position: 'middle',
-      style: {
-        fill: '#FFFFFF',
-        opacity: 0.6,
-      },
-    },
-    meta: {
-      type: { alias: 'category' },
-      sales: { alias: 'sales' },
+    xaxis: {
+      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
     },
   };
-  return <Column {...config} height={200} />;
+  const series = [
+    {
+      name: 'series-1',
+      data: [30, 40, 45, 50, 49, 60, 70, 91],
+    },
+  ];
+
+  return <Chart options={options} series={series} type="bar" />;
 };
 
 export default BarChart;

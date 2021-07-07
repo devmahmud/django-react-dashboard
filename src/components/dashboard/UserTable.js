@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table } from 'antd';
+import { Table } from 'react-bootstrap';
 import { getAllUsersAsync } from '../../redux/userSlice';
 
 const columns = [

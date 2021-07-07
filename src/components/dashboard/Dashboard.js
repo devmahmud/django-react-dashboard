@@ -1,5 +1,5 @@
-import { Row, Col, Card } from 'antd';
-import Navbar from '../layout/Navbar';
+import { Row, Col } from 'react-bootstrap';
+import TopNavbar from '../layout/TopNavbar';
 import BarChart from './Charts/BarChart';
 import LiquidChart from './Charts/LiquidChart';
 import PieChart from './Charts/PieChart';
@@ -8,32 +8,19 @@ import UserTable from './UserTable';
 export default function Dashboard() {
   return (
     <div>
-      <Navbar />
+      <TopNavbar />
 
-      <div className="custom-padding">
+      <div className="mt-4">
         {/* Charts */}
-        <Row gutter={[24, 16]}>
-          <Col md={8} sm={12} xs={24}>
-            <Card title="Bar Chart" bordered={false}>
-              <BarChart />
-            </Card>
+        <Row>
+          <Col md={4}>
+            <BarChart />
           </Col>
-          <Col md={8} sm={12} xs={24}>
-            <Card title="Pie Chart" bordered={false}>
-              <PieChart />
-            </Card>
+          <Col md={4}>
+            <PieChart />
           </Col>
-          <Col md={8} sm={12} xs={24}>
-            <Card title="Liquid Chart" bordered={false}>
-              <LiquidChart />
-            </Card>
-          </Col>
-
-          {/* User Table */}
-          <Col xs={24}>
-            <Card title="User Table" bordered={false}>
-              <UserTable />
-            </Card>
+          <Col md={4}>
+            <LiquidChart />
           </Col>
         </Row>
       </div>
