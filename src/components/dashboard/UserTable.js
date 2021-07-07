@@ -81,7 +81,7 @@ export default function UserTable() {
   return (
     <BootstrapTable
       keyField="id"
-      classes="table-responsive-sm"
+      classes="table-responsive-sm "
       data={users || []}
       columns={columns}
       pagination={paginationFactory()}
