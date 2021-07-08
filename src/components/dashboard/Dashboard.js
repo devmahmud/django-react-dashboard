@@ -4,6 +4,7 @@ import BarChart from './Charts/BarChart';
 import LiquidChart from './Charts/LiquidChart';
 import PieChart from './Charts/PieChart';
 import UserTable from './UserTable';
+import Filter from './Filter';
 
 export default function Dashboard() {
   return (
@@ -25,7 +26,10 @@ export default function Dashboard() {
         </Row>
 
         <Row className="mt-5">
-          <Col md={12}>
+          <Col md={4}>
+            <Filter />
+          </Col>
+          <Col md={12} className="mt-3">
             <UserTable />
           </Col>
         </Row>
